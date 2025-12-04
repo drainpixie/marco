@@ -1,0 +1,10 @@
+/.direnv
+/result
+/.envrc
+/.pre-commit-config.yaml
+
+node_modules/
+dist/
+
+*.sqlite
+.env

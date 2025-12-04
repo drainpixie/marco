@@ -1,0 +1,7 @@
+ignoredBuiltDependencies:
+  - esbuild
+
+onlyBuiltDependencies:
+  - bufferutil
+  - sqlite3
+  - zlib-sync
