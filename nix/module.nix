@@ -81,6 +81,6 @@ in {
       home = cfg.dataDir;
     };
 
-    users.group.${cfg.group} = {};
+    users.groups.${cfg.group} = {};
   };
 }
