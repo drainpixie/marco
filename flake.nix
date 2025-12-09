@@ -27,6 +27,9 @@
           inherit system;
         });
   in {
+    packages = forAllSystems ({pkgs, ...}: {default = pkgs.callPackage ./nix/package.nix {};});
+    nixosModules = forAllSystems ({pkgs, ...}: {default = pkgs.callPackage ./nix/module.nix {};});
+
     checks = forAllSystems ({
       system,
       pkgs,
@@ -35,6 +38,7 @@
       pre-commit = hooks.lib.${system}.run {
         src = ./.;
         package = pkgs.prek;
+
         hooks = {
           alejandra.enable = true;
           convco.enable = true;

@@ -1,11 +1,11 @@
 import {
   ChatInputCommandInteraction,
-  Interaction,
-  InteractionReplyOptions,
+  type Interaction,
+  type InteractionReplyOptions,
   Message,
   MessageFlags,
 } from "discord.js";
-import { logger, replacements } from "./env";
+import { logger, replacements } from "./env.js";
 
 export async function handleMessage(message: Message) {
   if (message.author.bot || !message.guildId || !message.channel.isSendable()) {
@@ -15,7 +15,7 @@ export async function handleMessage(message: Message) {
   const map = await replacements.get(message.guildId);
 
   const user = Object.keys(map).find((id) => message.mentions.users.has(id));
-  if (!user) return;
+  if (!user || !map[user]) return;
 
   try {
     await message.delete();

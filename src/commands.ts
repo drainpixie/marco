@@ -1,5 +1,5 @@
 import { REST, Routes, SlashCommandBuilder } from "discord.js";
-import { config, logger } from "./env";
+import { config, logger } from "./env.js";
 
 export const command = new SlashCommandBuilder()
   .setName("correct")
