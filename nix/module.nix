@@ -13,7 +13,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.marco;
+      default = pkgs.callPackage ./package.nix {};
       defaultText = literalExpression "pkgs.marco";
       description = "The package to use.";
     };
