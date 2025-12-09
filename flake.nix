@@ -6,8 +6,8 @@
 
   outputs = {
     self,
-    nixpkgs,
     hooks,
+    nixpkgs,
     ...
   }: let
     inherit (nixpkgs) lib;
@@ -28,7 +28,11 @@
         });
   in {
     packages = forAllSystems ({pkgs, ...}: {default = pkgs.callPackage ./nix/package.nix {};});
-    nixosModules = forAllSystems ({pkgs, ...}: {default = pkgs.callPackage ./nix/module.nix {};});
+
+    nixosModules = {
+      marco = ./nix/module.nix;
+      default = self.nixosModules.marco;
+    };
 
     checks = forAllSystems ({
       system,
