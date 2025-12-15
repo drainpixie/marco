@@ -45,6 +45,7 @@ function getEnv(key: string, fallback?: string) {
 
 const config = {
   token: getEnv("MARCO_TOKEN"),
+  port: Number(getEnv("MARCO_PORT", "3000")),
   databaseURL: getEnv("DATABASE_URL", "sqlite://marco.sqlite"),
 };
 
