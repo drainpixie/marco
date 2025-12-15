@@ -31,6 +31,12 @@ in {
       description = "Directory to store data persistently.";
     };
 
+    port = mkOption {
+      type = types.int;
+      default = 3000;
+      description = "Port to run Marco on.";
+    };
+
     user = mkOption {
       type = types.str;
       default = "marco";
@@ -68,6 +74,7 @@ in {
         ProtectHome = true;
         ReadWritePaths = [cfg.dataDir];
 
+        Environment = ["MARCO_PORT=${toString cfg.port}"];
         EnvironmentFile = mkIf (cfg.environmentFile != null) cfg.environmentFile;
       };
     };
